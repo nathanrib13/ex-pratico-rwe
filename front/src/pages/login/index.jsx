@@ -1,15 +1,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 // import { useAuth } from "../../hooks/useAuth";
-
-import { loginData, loginSchema } from "../../providers/validator";
+// import { loginData, loginSchema } from "../../providers/validator";
 import Container from "./style";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const navigate = useNavigate();
-    const { register, handleSubmit } = useForm < loginData > ({
-        resolver: zodResolver(loginSchema),
+    const { register } = useForm({
+        resolver: zodResolver(),
     });
 
     // const { signIn } = useAuth();
@@ -17,12 +16,12 @@ const Login = () => {
     return (
         <Container>
             <div>
-                <h1>Link Up</h1>
-                <h2>Conectando você a quem importa</h2>
+                <img src="https://rwesistemas.com.br/wp-content/uploads/2021/09/Logo_RWE_Sistemas.png" />
+                <h2>Desenvolvimento e integração de aplicações médicas</h2>
             </div>
 
             <section>
-                <form onSubmit={handleSubmit(signIn)}>
+                <form >
                     <h1>Login</h1>
                     <label htmlFor="">Email</label>
                     <input
@@ -50,8 +49,8 @@ const Login = () => {
                         Registre grátis
                     </button>
                 </form>
-            </section>
-        </Container>
+            </section >
+        </Container >
     );
 };
 

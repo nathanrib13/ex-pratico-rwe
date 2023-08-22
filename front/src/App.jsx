@@ -1,5 +1,4 @@
 import GlobalStyle from "./styles/GlobalStyle";
-// import { AuthProvider } from "./providers/authProvider";
 import RoutesMain from "./routes";
 
 
@@ -9,9 +8,6 @@ function App() {
     <>
       <GlobalStyle />
       <RoutesMain />
-      {/* <AuthProvider>
-    
-      </AuthProvider> */}
 
     </>
   )
