@@ -8,26 +8,26 @@ const Container = styled.main`
   justify-content: space-between;
 
   div {
-    width: 35%;
+    width: 40%;
     height: 100%;
-    background-color: #004aad;
+    background-color: #000;
     display: flex;
     flex-direction: column;
     color: #fff;
     align-items: center;
     justify-content: center;
+    text-align: center;
     gap: 8px;
-
-    > h1 {
-      margin-top: -36px;
-      font-size: 58px;
-      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    > img {
+      z-index: 99;
+      max-width: 400px;
     }
     > h2 {
-      text-align: center;
-      color: rgba(190, 180, 190, 0.8);
-      width: 56%;
+      align-self: center;
+      font-family: "Roboto";
+      width: 150%;
+      margin-top: 35px;
+      color: rgba(190, 180, 190, 0.9);
     }
   }
 
@@ -71,11 +71,11 @@ const Container = styled.main`
     }
 
     input::placeholder {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Roboto";
     }
 
     button {
-      background-color: #004aad;
+      background-color: #000;
       color: white;
       padding: 8px 16px;
       border: none;
@@ -83,6 +83,9 @@ const Container = styled.main`
       margin-top: 16px;
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
+      &:hover {
+        background-color: rgba(00, 00, 00, 0.6);
+      }
     }
 
     span {

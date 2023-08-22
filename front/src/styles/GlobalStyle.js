@@ -1,10 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+  @import
+  url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+  
    :root {
- 
-
     font-size: 60%;   
+    font-family: 'Roboto';
   }
 
   /* font-size: 16px;
@@ -41,18 +43,17 @@ export default createGlobalStyle`
   }
 
   body, input, button, textarea {
-    font-family: 'Inter';
+    font-family: 'Roboto';
     font-size: 1.6rem;
-    font-family: Arial, Helvetica, sans-serif;
-  }
 
-  h1, h2, h3, h4, h5, h6, strong{
+  }
+  h1, h2, h3, h4, h5, h6, p, strong{
     font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 
   button {
     cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 `;
