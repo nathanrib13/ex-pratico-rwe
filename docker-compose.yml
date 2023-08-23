@@ -1,0 +1,36 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rwe_clients
+
+    ports:
+      - "5440:5432"
+
+  api:
+    build:
+      context: ./back
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: rwe_clients
+
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./back:/app/api
+
+  # react-app:
+  #   build:
+  #     context: ./front
+  #   ports:
+  #     - "80:80"
+  #   environment:
+  #     # REACT_APP_API_URL: http://api:3000 # Atualize com a URL correta da sua API

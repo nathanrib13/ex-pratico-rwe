@@ -1,0 +1,23 @@
+# Use a imagem base Node.js
+FROM node:14
+
+# Diretório de trabalho dentro do contêiner
+WORKDIR /app/api
+
+# Copie o arquivo package.json e package-lock.json para o diretório de trabalho
+COPY package*.json ./
+COPY ./package-lock.json .
+
+# Instale as dependências
+RUN npm install
+
+# Copie o restante do código da API para o contêiner
+COPY . .
+
+# Exponha a porta em que a API irá ouvir
+EXPOSE 3000
+
+# Comando para iniciar a API
+CMD [ "npm", "run", "dev" ]
+
+
