@@ -39,10 +39,21 @@ const Register = () => {
                 <input type="text" id="name" {...register("name")} placeholder="Digite seu nome" />
                 <label htmlFor="">Email</label>
                 <input type="email" id="email" {...register("email")} placeholder="Digite seu email" />
-                <label htmlFor="">Telefone</label>
-                <input type="text" id="phone" {...register("phone")} placeholder="Digite seu email" />
                 <label htmlFor="">Senha</label>
                 <input type="password" id="password" {...register("password")} placeholder="Digite sua senha" />
+                <label htmlFor="">Sobre</label>
+                <input type="text" id="about" {...register("about")} placeholder="Conte um pouco sobre voce" />
+                <label htmlFor="">Facebook</label>
+                <input type="text" id="about" {...register("about")} placeholder="Conte um pouco sobre voce" />
+                <label htmlFor="">Instagram</label>
+                <input type="text" id="about" {...register("about")} placeholder="Conte um pouco sobre voce" />
+                <label htmlFor="">Twitter</label>
+                <input type="text" id="about" {...register("about")} placeholder="Conte um pouco sobre voce" />
+                <label htmlFor="">Linkedin</label>
+                <input type="text" id="about" {...register("about")} placeholder="Conte um pouco sobre voce" />
+                <label htmlFor="">Photo</label>
+                <input type="file" id="about" {...register("about")} placeholder="Conte um pouco sobre voce" />
+
                 <button type="submit">Cadastrar</button>
                 <span>Ja tem uma conta?</span>
                 <button

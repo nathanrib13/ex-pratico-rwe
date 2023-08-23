@@ -2,15 +2,22 @@ import { useNavigate } from "react-router-dom";
 import HeaderStyled from "./style.js";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-
+import ModalEditUser from "../modalEditUser/ModalEditUser.jsx";
 
 const Header = () => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+    const [isModalEditOpen, setIsModalEditOpen] = useState(false);
 
     const logout = () => {
         localStorage.clear();
         navigate("/");
+    };
+    const openEditUserModal = () => {
+        setIsModalEditOpen(true);
+    };
+    const closeEditUserModal = () => {
+        setIsModalEditOpen(false);
     };
 
 
@@ -23,14 +30,19 @@ const Header = () => {
             {isOpen && (
                 <section>
                     <ul>
-                        <li>Editar Perfil</li>
+                        <li onClick={openEditUserModal}>Editar Perfil</li>
                         <li>Sobre</li>
                         <li>FAQ</li>
                         <li onClick={logout}>Sair</li>
                     </ul>
                 </section>
             )}
-
+            {isModalEditOpen && (
+                <ModalEditUser
+                    openEditUserModal={isModalEditOpen}
+                    closeEditUserModal={closeEditUserModal}
+                />
+            )}
 
         </HeaderStyled>
     );

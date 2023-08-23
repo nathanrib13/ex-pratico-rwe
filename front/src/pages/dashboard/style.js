@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 const Container = styled.section`
-  background-color: #004aad;
+  background-color: #000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: "Roboto";
+  height: auto;
 
   li {
     cursor: pointer;
@@ -13,7 +14,6 @@ const Container = styled.section`
 
   > section {
     width: 75%;
-    background-color: #fff;
     border-radius: 25px;
     display: flex;
     flex-direction: column;
@@ -21,106 +21,38 @@ const Container = styled.section`
     color: #fff;
     padding: 20px;
     gap: 14px;
-    > div:first-child {
-      display: flex;
+  }
 
-      > div {
-        display: flex;
-        width: 50%;
-        align-items: center;
-        position: relative;
-        > input {
-          width: 100%;
-          border-radius: 25px;
-          border: 1px solid #004aad;
-          padding: 12px;
-        }
-        > svg {
-          right: 5px;
-          position: absolute;
-          width: 30px;
-          height: 30px;
-          color: #004aad;
-        }
-      }
-      ul {
-        display: flex;
-        gap: 25px;
-
-        li.green {
-          border-radius: 4px;
-          padding: 8px 16px;
-          color: white;
-          background-color: rgba(0, 128, 0, 0.5);
-        }
-
-        li.red {
-          border-radius: 4px;
-          padding: 8px 16px;
-          color: white;
-          background-color: rgba(255, 0, 0, 0.5);
-        }
-
-        li.blue {
-          border-radius: 4px;
-          padding: 8px 16px;
-          color: white;
-          background-color: rgba(0, 0, 255, 0.5);
-        }
-
-        li.purple {
-          border-radius: 4px;
-          padding: 8px 16px;
-          color: white;
-          background-color: rgba(128, 0, 128, 0.5);
-        }
-
-        li {
-          border-radius: 4px;
-          padding: 8px 16px;
-          color: white;
-          background-color: rgba(8, 8, 8, 0.7);
-        }
-      }
-    }
+  > h2 {
+    font-size: 38px;
+    margin: 35px;
+    color: #fff;
+  }
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: center;
+    color: #fff;
+    padding: 20px;
+    border-radius: 0;
+    margin-bottom: 95px;
 
     > div {
-      width: 100%;
-      color: #000;
       display: flex;
       justify-content: space-between;
-      padding: 20px;
-      align-items: center;
-      > h2 {
-        font-weight: 600;
-      }
-      > button {
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: #004aad;
-        color: white;
-        border-radius: 12px;
-        border: none;
-        padding: 12px;
-        &:hover {
-          background-color: rgba(80, 190, 290, 0.6);
-        }
-      }
-    }
-
-    > h2 {
-      color: black;
-      margin-bottom: 12px;
-    }
-    > p {
-      color: #000;
-    }
-
-    div.noContacts {
-      background-color: #d9d9d9;
-      width: 35%;
-      border-radius: 25px;
-      display: flex;
+      height: 265px;
       flex-direction: column;
+      padding: 25px;
+      gap: 8px;
+      border: 1px solid white;
+      > button {
+        align-self: flex-end;
+        padding: 4px;
+        width: 15%;
+        background-color: white;
+        border: none;
+      }
     }
   }
 `;
