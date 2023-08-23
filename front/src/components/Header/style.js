@@ -37,9 +37,8 @@ const HeaderStyled = styled.header`
     background-color: #fff;
     border: 2px solid black;
     padding: 15px;
-    width: 18%;
-    height: 35%;
-    border-radius: 8px;
+    width: 22%;
+    height: 45%;
     z-index: 27;
 
     > ul {
@@ -52,10 +51,12 @@ const HeaderStyled = styled.header`
       > li {
         padding: 4px;
         width: 100%;
-        border-bottom: 0.5px solid #004aad;
+        border-bottom: 0.5px solid #000;
         cursor: pointer;
       }
       > li:hover {
+        background-color: black;
+        color: #fff;
         font-weight: 700;
       }
     }

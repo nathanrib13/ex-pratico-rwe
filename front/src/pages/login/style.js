@@ -62,8 +62,7 @@ const Container = styled.main`
     input {
       padding: 12px;
       margin-bottom: 19px;
-      border-radius: 4px;
-      border: 1px solid blue;
+      border: 1px solid black;
     }
     input::placeholder {
       font-family: "Roboto";

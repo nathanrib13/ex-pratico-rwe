@@ -4,12 +4,11 @@ const Container = styled.main`
   height: 100vh;
   display: flex;
   flex-direction: row-reverse;
-  align-items: center;
   justify-content: space-between;
 
   div {
     width: 40%;
-    height: 100%;
+    height: 150vh;
     background-color: #000;
     display: flex;
     flex-direction: column;
@@ -19,6 +18,7 @@ const Container = styled.main`
     text-align: center;
     gap: 8px;
     > img {
+      margin-top: -255px;
       z-index: 99;
       max-width: 400px;
     }
@@ -33,8 +33,6 @@ const Container = styled.main`
 
   section {
     position: absolute;
-    width: 100%;
-    height: 100%;
     padding: 45px;
     display: flex;
     align-items: center;
@@ -43,9 +41,10 @@ const Container = styled.main`
 
   form {
     position: absolute;
+    margin: 50px 0px;
     left: 20%;
     width: 25%;
-    height: 75%;
+    height: auto;
     background-color: white;
     padding: 25px;
     border-radius: 8px;
@@ -66,8 +65,7 @@ const Container = styled.main`
     input {
       padding: 6px;
       margin-bottom: 19px;
-      border-radius: 4px;
-      border: 1px solid blue;
+      border: 1px solid black;
     }
 
     input::placeholder {

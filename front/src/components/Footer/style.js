@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const FooterStyled = styled.footer`
-  margin-top: 120px;
   width: 100%;
   height: auto;
   color: rgba(70, 70, 70);

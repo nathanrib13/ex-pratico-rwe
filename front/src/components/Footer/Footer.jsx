@@ -11,7 +11,7 @@ const Footer = () => {
                 <li>SAC</li>
             </ul>
             <div>
-                <p>Contact List by Nathan Ribero </p>
+                <p>RWE sistemas by Nathan Ribero </p>
                 <p>Copyright © 2023 Todos os direitos reservados</p>
             </div>
         </FooterStyled>
