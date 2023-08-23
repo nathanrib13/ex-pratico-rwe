@@ -1,6 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { getRounds, hashSync } from "bcryptjs";
+import { BeforeInsert, BeforeUpdate, Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidv4 } from 'uuid';
-
+import { Image } from "./Image.entity";
 
 @Entity('users')
 export class User{
@@ -13,26 +14,35 @@ export class User{
     @Column({ length: 75, unique: true })
     email: string;
 
-    @Column({})
+    @Column()
     password: string;
 
-    @Column({})
+    @Column()
     about: string;
 
-    @Column({})
+    @Column()
     facebook: string;
 
-    @Column({})
+    @Column()
     twitter: string;
 
-    @Column({})
+    @Column()
     linkedin: string;
 
-    @Column({})
+    @Column()
     instagram: string;
 
-    @Column({})
-    profilePhoto: string;
+    @OneToOne(() => Image, image => image.user)
+    image: Image
+    
+    @BeforeInsert()
+    @BeforeUpdate()
+    hashPassword() {
+      const isEncrypted = getRounds(this.password);
+      if (!isEncrypted) {
+        this.password = hashSync(this.password, 10);
+      }
+    }
     
 
 

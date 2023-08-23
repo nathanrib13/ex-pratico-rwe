@@ -1,5 +1,6 @@
-import { UserCardStyle } from "./style";
+/* eslint-disable react/prop-types */
 
+import { UserCardStyle } from "./style";
 
 const UserCard = () => {
 
@@ -11,7 +12,7 @@ const UserCard = () => {
             />
             <div>
                 <div>
-                    <h2>Bem vinda, Gisele</h2>
+                    <h2>Bem vindo(a), </h2>
                 </div>
             </div>
         </UserCardStyle>

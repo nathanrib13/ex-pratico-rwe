@@ -2,10 +2,14 @@ import Container from "./style";
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
 import UserCard from "../../components/UserCard/UserCard";
+import { AuthContext } from "../../providers/authProvider/";
 
-
+import { useContext, } from "react";
 
 const Dashboard = () => {
+    const userData = useContext(AuthContext);
+    console.log(userData)
+
 
     return (
         <Container>

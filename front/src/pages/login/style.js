@@ -9,6 +9,7 @@ const Container = styled.main`
   div {
     width: 40%;
     height: 100%;
+    min-width: 400px;
     background-color: #000;
     display: flex;
     flex-direction: column;
@@ -19,6 +20,7 @@ const Container = styled.main`
     gap: 8px;
     > img {
       z-index: 99;
+      min-width: 200px;
       max-width: 400px;
     }
     > h2 {
@@ -30,20 +32,18 @@ const Container = styled.main`
   }
 
   section {
-    position: absolute;
-    width: 100%;
+    width: 60%;
     height: 100%;
-    padding: 45px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
   }
 
   form {
-    position: absolute;
-    right: 20%;
-    width: 25%;
+    align-self: center;
+    width: 40%;
     height: 65%;
+    min-width: 300px;
     background-color: white;
     padding: 25px;
     border-radius: 8px;
@@ -85,6 +85,50 @@ const Container = styled.main`
     span {
       align-self: flex-start;
       margin: 30px 0px 14px 3px;
+    }
+  }
+
+  @media (max-width: 790px) {
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    div {
+      background-color: #000;
+      height: 15%;
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      text-align: center;
+      gap: 8px;
+      > img {
+        top: 50px;
+        position: absolute;
+      }
+      > h2 {
+        display: none;
+      }
+    }
+    section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    form {
+      z-index: 99;
+      align-self: center;
+      width: 60%;
+      height: 65%;
+      min-width: 300px;
+      min-height: 450px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0px 8px 14px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      > h1 {
+        margin-bottom: 26px;
+      }
     }
   }
 `;

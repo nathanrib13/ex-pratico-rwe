@@ -1,17 +1,32 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-// import { useAuth } from "../../hooks/useAuth";
-// import { loginData, loginSchema } from "../../providers/validator";
+import api from "../../services/api";
+import { loginSchema } from "../../providers/validator";
 import Container from "./style";
 import { useNavigate } from "react-router-dom";
+import { Toaster, toast } from "sonner";
+
 
 const Login = () => {
     const navigate = useNavigate();
-    const { register } = useForm({
-        resolver: zodResolver(),
+    const { register, handleSubmit } = useForm({
+        resolver: zodResolver(loginSchema),
     });
 
-    // const { signIn } = useAuth();
+    const signIn = async (data) => {
+
+        try {
+            const response = await api.post("/login", data);
+            const { token } = response.data;
+            api.defaults.headers.common.authorization = `Bearer ${token}`;
+            localStorage.setItem("rwe:token", token);
+            navigate("/dashboard");
+        } catch (error) {
+            if (error.response.status) toast.error("Login ou senha inválidos");
+            console.log(error.response.status);
+        }
+    };
+
 
     return (
         <Container>
@@ -21,7 +36,7 @@ const Login = () => {
             </div>
 
             <section>
-                <form >
+                <form onSubmit={handleSubmit(signIn)}>
                     <h1>Login</h1>
                     <label htmlFor="">Email</label>
                     <input
@@ -50,6 +65,8 @@ const Login = () => {
                     </button>
                 </form>
             </section >
+            <Toaster position="top-center" richColors />
+
         </Container >
     );
 };
