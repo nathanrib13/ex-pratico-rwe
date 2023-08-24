@@ -1,7 +1,6 @@
 import { getRounds, hashSync } from "bcryptjs";
 import { BeforeInsert, BeforeUpdate, Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidv4 } from 'uuid';
-import { Image } from "./Image.entity";
 
 @Entity('users')
 export class User{
@@ -32,8 +31,8 @@ export class User{
     @Column()
     instagram: string;
 
-    @OneToOne(() => Image, image => image.user)
-    image: Image
+    @Column()
+    image: string
     
     @BeforeInsert()
     @BeforeUpdate()

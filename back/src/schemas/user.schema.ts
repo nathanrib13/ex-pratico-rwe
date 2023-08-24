@@ -9,7 +9,7 @@ const createUserSchema = z.object({
   twitter: z.string(),
   linkedin: z.string(),
   instagram: z.string(),
-  profilePhoto: z.string(),
+  image: z.string(),
 
 });
 
@@ -23,8 +23,7 @@ const userUpdateSchema = z.object({
   password: z.string().optional(),
 });
 
-const readUserSchemaReturn = createUserSchemaReturn.extend({
-});
+const readUserSchemaReturn = createUserSchemaReturn
 export {
   createUserSchema,
   createUserSchemaReturn,

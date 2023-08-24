@@ -43,9 +43,9 @@ const createUserController = async (req: Request, res: Response) => {
 
 const readUserController = async (req: Request, res: Response) => {
   const userID = req.user.id
-  const allUsers = await readUserService(userID);
+  const userFound = await readUserService(userID);
 
-  res.json(allUsers);
+  res.json(userFound);
 };
 
 const updateUserController = async (req: Request, res: Response) => {
