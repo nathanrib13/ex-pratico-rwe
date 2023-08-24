@@ -50,6 +50,7 @@ const Container = styled.main`
     box-shadow: 0px 8px 14px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
+
     > h1 {
       margin-bottom: 26px;
     }
@@ -57,12 +58,20 @@ const Container = styled.main`
     label {
       color: black;
       margin-bottom: 8px;
+      margin-top: 18px;
     }
 
     input {
-      padding: 12px;
-      margin-bottom: 19px;
+      padding: 6px;
       border: 1px solid black;
+      border-radius: 4px;
+    }
+    span {
+      margin-top: 5px;
+      margin-left: 5px;
+      font-size: 11px;
+      padding: 0;
+      color: red;
     }
     input::placeholder {
       font-family: "Roboto";
@@ -82,7 +91,7 @@ const Container = styled.main`
       }
     }
 
-    span {
+    p {
       align-self: flex-start;
       margin: 30px 0px 14px 3px;
     }

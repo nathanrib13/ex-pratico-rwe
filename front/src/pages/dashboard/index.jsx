@@ -2,20 +2,45 @@ import Container from "./style";
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
 import UserCard from "../../components/UserCard/UserCard";
-import { AuthContext } from "../../providers/authProvider/";
-
-import { useContext, } from "react";
+import { useEffect, useState } from "react";
+import api from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-    const userData = useContext(AuthContext);
-    console.log(userData)
+    const [userData, setUserData] = useState(null);
+    const navigate = useNavigate()
 
+
+
+    useEffect(() => {
+        async function loadUser() {
+            console.log("no useEffect");
+            const token = localStorage.getItem("rwe:token");
+            if (token) {
+                try {
+                    api.defaults.headers.common.Authorization = `Bearer ${token}`;
+                    const response = await api.get("/users");
+                    console.log(response.data, "aaaaaaaa");
+                    setUserData(response.data);
+                } catch (error) {
+                    console.log(error);
+
+                }
+            }
+            else {
+                navigate("/");
+            }
+        }
+        loadUser();
+    }, []);
+
+    console.log(userData, "vvvvvvvvvvvvv")
 
     return (
         <Container>
             <Header />
 
-            <UserCard />
+            <UserCard userData={userData} />
             <h2>Meus Projetos</h2>
             <section className="projects">
 

@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form";
 import Container from "./style";
 import { registerSchema } from "../../providers/validator";
 import { useNavigate } from "react-router-dom";
-import { Toaster, toast } from "sonner";
+import { Toaster } from "sonner";
 import api from "../../services/api";
 
 const Register = () => {
     const navigate = useNavigate();
-    const { register, handleSubmit } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(registerSchema),
     });
 
@@ -16,13 +16,13 @@ const Register = () => {
         console.log('aaaaaaaa')
         try {
             await api.post("/users", data);
-            toast.success("usuário criado com sucesso!");
+            alert("usuário criado com sucesso!");
             setTimeout(() => {
                 navigate("/");
             }, 1000);
         } catch (error) {
             console.log(error);
-            toast.error("nao foi possivel criar sua conta");
+            alert("nao foi possivel criar sua conta");
         }
     };
 
@@ -35,27 +35,44 @@ const Register = () => {
             <section>
                 <form onSubmit={handleSubmit(registerReq)}>
                     <h1>Crie sua conta</h1>
-                    <label htmlFor="">Nome</label>
+                    <label htmlFor="name">Nome</label>
                     <input type="text" id="name" {...register("name")} placeholder="Digite seu nome" />
-                    <label htmlFor="">Email</label>
+                    {errors.name && <span className="error-message">{errors.name.message}</span>}
+
+                    <label htmlFor="email">Email</label>
                     <input type="email" id="email" {...register("email")} placeholder="Digite seu email" />
-                    <label htmlFor="">Senha</label>
+                    {errors.email && <span className="error-message">{errors.email.message}</span>}
+
+                    <label htmlFor="password">Senha</label>
                     <input type="password" id="password" {...register("password")} placeholder="Digite sua senha" />
-                    <label htmlFor="">Sobre</label>
+                    {errors.password && <span className="error-message">{errors.password.message}</span>}
+
+                    <label htmlFor="about">Sobre</label>
                     <input type="text" id="about" {...register("about")} placeholder="Conte um pouco sobre voce" />
-                    <label htmlFor="">Facebook</label>
-                    <input type="text" id="facebook" {...register("facebook")} placeholder="Conte um pouco sobre voce" />
-                    <label htmlFor="">Instagram</label>
-                    <input type="text" id="instagram" {...register("instagram")} placeholder="Conte um pouco sobre voce" />
-                    <label htmlFor="">Twitter</label>
-                    <input type="text" id="twitter" {...register("twitter")} placeholder="Conte um pouco sobre voce" />
-                    <label htmlFor="">Linkedin</label>
-                    <input type="text" id="linkedin" {...register("linkedin")} placeholder="Conte um pouco sobre voce" />
-                    <label htmlFor="">Photo</label>
-                    <input type="text" id="photo" {...register("profilePhoto")} placeholder="Conte um pouco sobre voce" />
+                    {errors.about && <span className="error-message">{errors.about.message}</span>}
+
+                    <label htmlFor="facebook">Facebook</label>
+                    <input type="text" id="facebook" {...register("facebook")} placeholder="URL do Facebook" />
+                    {errors.facebook && <span className="error-message">{errors.facebook.message}</span>}
+
+                    <label htmlFor="instagram">Instagram</label>
+                    <input type="text" id="instagram" {...register("instagram")} placeholder="URL do Instagram" />
+                    {errors.instagram && <span className="error-message">{errors.instagram.message}</span>}
+
+                    <label htmlFor="twitter">Twitter</label>
+                    <input type="text" id="twitter" {...register("twitter")} placeholder="URL do Twitter" />
+                    {errors.twitter && <span className="error-message">{errors.twitter.message}</span>}
+
+                    <label htmlFor="linkedin">Linkedin</label>
+                    <input type="text" id="linkedin" {...register("linkedin")} placeholder="URL do Linkedin" />
+                    {errors.linkedin && <span className="error-message">{errors.linkedin.message}</span>}
+
+                    <label htmlFor="image">Photo</label>
+                    <input type="text" id="image" {...register("image")} placeholder="URL da Foto" />
+                    {errors.image && <span className="error-message">{errors.image.message}</span>}
 
                     <button type="submit">Cadastrar</button>
-                    <span>Ja tem uma conta?</span>
+                    <p>Ja tem uma conta?</p>
                     <button
                         onClick={() => {
                             navigate("/");
@@ -67,7 +84,9 @@ const Register = () => {
                 </form>
             </section>
             <Toaster position="top-center" richColors />
+
         </Container>
+
     );
 };
 

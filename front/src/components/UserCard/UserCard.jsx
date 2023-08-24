@@ -2,17 +2,17 @@
 
 import { UserCardStyle } from "./style";
 
-const UserCard = () => {
+const UserCard = ({ userData }) => {
 
     return (
         <UserCardStyle>
             <img
-                src="https://img.freepik.com/fotos-premium/pessoa-usando-telefone-celular-sobre-fundo-isolado_1368-174417.jpg?w=2000"
+                src={userData?.image}
                 alt=""
             />
             <div>
                 <div>
-                    <h2>Bem vindo(a), </h2>
+                    <h2>Bem vindo(a), {userData?.name} </h2>
                 </div>
             </div>
         </UserCardStyle>

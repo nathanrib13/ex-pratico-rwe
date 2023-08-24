@@ -4,12 +4,11 @@ import api from "../../services/api";
 import { loginSchema } from "../../providers/validator";
 import Container from "./style";
 import { useNavigate } from "react-router-dom";
-import { Toaster, toast } from "sonner";
 
 
 const Login = () => {
     const navigate = useNavigate();
-    const { register, handleSubmit } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(loginSchema),
     });
 
@@ -22,7 +21,7 @@ const Login = () => {
             localStorage.setItem("rwe:token", token);
             navigate("/dashboard");
         } catch (error) {
-            if (error.response.status) toast.error("Login ou senha inválidos");
+            alert("login ou senha inválidos")
             console.log(error.response.status);
         }
     };
@@ -45,6 +44,8 @@ const Login = () => {
                         {...register("email")}
                         placeholder="Digite seu email"
                     />
+                    {errors.email && <span className="error-message">{errors.email.message}</span>}
+
                     <label htmlFor="">Senha</label>
                     <input
                         type="password"
@@ -52,9 +53,10 @@ const Login = () => {
                         {...register("password")}
                         placeholder="Digite sua senha"
                     />
+                    {errors.password && <span className="error-message">{errors.password.message}</span>}
 
                     <button type="submit">Entrar</button>
-                    <span> Ainda nao possui uma conta?</span>
+                    <p> Ainda nao possui uma conta?</p>
                     <button
                         onClick={() => {
                             navigate("/register");
@@ -65,7 +67,6 @@ const Login = () => {
                     </button>
                 </form>
             </section >
-            <Toaster position="top-center" richColors />
 
         </Container >
     );

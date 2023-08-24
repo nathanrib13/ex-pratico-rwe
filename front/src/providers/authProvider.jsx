@@ -9,18 +9,18 @@ const AuthContext = createContext();
 
 
 const AuthProvider = ({ children }) => {
+    console.log("no provider")
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [userData, setUserData] = useState(null);
 
 
+
     useEffect(() => {
         async function loadUser() {
-            console.log("aaa1111111111")
+            console.log("no usefffetr")
             const token = localStorage.getItem("rwe:token");
-            console.log(token)
             if (token) {
-                console.log("bbbbbb")
                 try {
                     api.defaults.headers.common.Authorization = `Bearer ${token}`;
                     const response = await api.get("/users");
@@ -37,7 +37,6 @@ const AuthProvider = ({ children }) => {
 
             }
         }
-
         loadUser();
     }, [navigate]);
 
