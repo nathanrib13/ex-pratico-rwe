@@ -10,7 +10,9 @@ COPY package*.json ./
 # Instale as dependências
 RUN npm install
 
-# Exponha a porta em que o Vite irá ouvir (normalmente é 3000)
+# Copie o restante do código da API para o contêiner
+COPY . .
+
 EXPOSE 5173
 
 # Comando para iniciar o servidor de desenvolvimento do Vite
