@@ -1,6 +1,6 @@
 version: "3"
 services:
-  postgres:
+  bd:
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
@@ -14,9 +14,9 @@ services:
     build:
       context: ./back
     depends_on:
-      - postgres
+      - bd
     environment:
-      DB_HOST: postgres
+      DB_HOST: bd
       DB_PORT: 5432
       DB_USER: postgres
       DB_PASSWORD: postgres
@@ -24,13 +24,13 @@ services:
 
     ports:
       - "3000:3000"
-    volumes:
-      - ./back:/app/api
 
-  # react-app:
-  #   build:
-  #     context: ./front
-  #   ports:
-  #     - "80:80"
-  #   environment:
-  #     # REACT_APP_API_URL: http://api:3000 # Atualize com a URL correta da sua API
+  front:
+    build:
+      context: ./front
+    depends_on:
+      - api
+    ports:
+      - "5173:5173"
+    environment:
+      REACT_APP_API_URL: http://api:3000/

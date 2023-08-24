@@ -6,7 +6,6 @@ WORKDIR /app/api
 
 # Copie o arquivo package.json e package-lock.json para o diretório de trabalho
 COPY package*.json ./
-COPY ./package-lock.json .
 
 # Instale as dependências
 RUN npm install

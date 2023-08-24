@@ -10,17 +10,14 @@ const dataSourceConfig = (): DataSourceOptions => {
     "./migrations/**.{ts,js}"
   );
 
-  const dbUrl: string | undefined = process.env.DATABASE_URL;
-
-  if (!dbUrl) {
-    throw new Error("Env var DATABASE_URL does not exists");
-  }
-
-  const nodeEnv: string | undefined = process.env.NODE_ENV;
   return {
     type: "postgres",
-    url: dbUrl,
-    synchronize: false,
+    host: process.env.DB_HOST!!,
+    port: parseInt(process.env.DB_PORT!!),
+    username: process.env.DB_USER!!,
+    password: process.env.DB_PASSWORD!!,
+    database: process.env.DB_NAME!!,
+    synchronize: true,
     logging: true,
     migrations: [migrationsPath],
     entities: [entitiesPath],
