@@ -19,10 +19,7 @@ const readUserService = async (userID: string): Promise<IReadUserReturn> => {
 
   const userFound = readUserSchemaReturn.parse(findUser);
 
-
-  const userWithContacts = { ...userFound };
-
-  return userWithContacts;
+  return userFound;
 };
 
 export default readUserService;
