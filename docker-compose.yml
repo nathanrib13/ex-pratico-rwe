@@ -1,0 +1,36 @@
+version: "3"
+services:
+  bd:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rwe_clients
+
+    ports:
+      - "5440:5432"
+
+  api:
+    build:
+      context: ./back
+    depends_on:
+      - bd
+    environment:
+      DB_HOST: bd
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: rwe_clients
+
+    ports:
+      - "3000:3000"
+
+  front:
+    build:
+      context: ./front
+    depends_on:
+      - api
+    ports:
+      - "5173:5173"
+    environment:
+      REACT_APP_API_URL: http://api:3000/
