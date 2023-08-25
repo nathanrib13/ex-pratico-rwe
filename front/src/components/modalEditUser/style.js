@@ -91,6 +91,26 @@ const ModalContent = styled.div`
       color: black;
     }
   }
+  .modal-upload-Image{ 
+    position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    > div{
+      padding: 25px;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 50% ;
+      right: 50%;
+  }
+  }
+
   button.deleteUser {
     background-color: red;
     color: white;
