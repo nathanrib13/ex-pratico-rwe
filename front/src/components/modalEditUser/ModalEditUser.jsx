@@ -16,6 +16,7 @@ const ModalEditUser = ({
      const [uploadImage, setUploadImage] = useState(false);
 
 
+
     const { register, handleSubmit, formState: { errors }} = useForm({
         resolver: zodResolver(updateUserSchema),
     });
@@ -85,21 +86,24 @@ const ModalEditUser = ({
 
                     <div>
                         <button type="submit">Enviar</button>
-                        <button onClick={closeEditUserModal} type="button">     Fechar
-                        </button>
+                        
                     </div>
-        
+                    
+
                 </form>
                 {uploadImage &&   <div className="modal-upload-Image">
                         <form onSubmit={handleSubmit(sendImage)}>
                         <input type="file"/>
+                        <div>
                         <button type="submit">  enviar </button>
                         <button onClick={closeEditImage}>fechar</button>
+                        </div>
                         </form>
+                        
                      </div>}
             
              
-              
+            <button type="button"className="close-modal" onClick={closeEditUserModal}>x</button>
             </ModalContent>
             
         </ModalWrapper >

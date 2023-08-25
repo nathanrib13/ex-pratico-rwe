@@ -6,47 +6,41 @@ const ModalWrapper = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 99;
+  overflow-y: auto; /* Habilita a rolagem vertical quando o conteúdo excede a altura */
+  padding: 35% 0 25px 0 ;
 `;
 
 const ModalContent = styled.div`
-  width: 60%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  color: black;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 4px;
-  gap: 15px;
-  > h2 {
-    margin-bottom: 10px;
-  }
+position: relative;
+  background-color: white;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 
-  > form {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 4px;
-    max-height: 80%;
-    > input {
-      margin-bottom: 12px;
-    }
-
-    > div {
-      display: flex;
-      gap: 8px;
-    }
-  }
 
   > h2 {
     text-align: center;
+    margin-bottom: 15px;
+  }
+
+  > form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    span {
+      margin-top: -5px;
+      margin-left: 5px;
+      font-size: 11px;
+      padding: 0;
+      color: red;
+    }
   }
 
   label {
@@ -54,79 +48,81 @@ const ModalContent = styled.div`
     flex-direction: column;
     color: black;
     margin-bottom: 8px;
-    gap: 9px;
+    gap: 6px;
   }
 
   input,
   textarea {
-    padding: 12px;
-    border: 1px solid black;
-  }
-
-  input::placeholder {
-    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
   }
 
   select {
-    padding: 12px;
+    padding: 10px;
     border-radius: 4px;
-    border: 1px solid blue;
+    border: 1px solid #ccc;
+    width: 100%;
   }
 
   button {
     background-color: #004aad;
+    margin-top: 15px;
+    width: 100%;
     color: white;
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
-    margin-top: 16px;
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
-    cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 8px;
 
     &:hover {
-      background-color: rgba(0, 0, 290, 0.4);
-      color: black;
+      background-color: rgba(0, 74, 173, 0.8);
     }
+
+ 
   }
-  .modal-upload-Image{ 
+  .close-modal{
+    width: auto;
+      background-color: #000;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+
+    }
+  .modal-upload-Image {
     position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
-    > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+
+    > div {
       padding: 25px;
+      width: 100%;
       background-color: #fff;
       display: flex;
       flex-direction: column;
-      position: absolute;
-      top: 50% ;
-      right: 50%;
-  }
-  }
+      gap: 15px;
+      width: 400px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-  button.deleteUser {
-    background-color: red;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    margin-top: 16px;
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 8px;
-
-    &:hover {
-      background-color: rgba(190, 0, 0, 0.6);
+     
     }
+    form {
+        background-color: #fff;
+        padding: 15px;
+      }
   }
 
   .button-container {
@@ -135,59 +131,51 @@ const ModalContent = styled.div`
   }
 
   .ProfileCardStyle {
-    width: 25%;
-    height: 45%;
-    border-radius: 70%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
     background-color: #000;
-    padding: 5px;
-    margin-bottom: 28px;
     position: relative;
-  }
+    align-self: center;
+    overflow: hidden;
 
-  .ProfileCardStyle img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-  .ProfileCardStyle:hover img {
-    background-color: #333;
-  }
+    &:hover::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      z-index: 1;
+      cursor: pointer;
+    }
 
-  .ProfileCardStyle:hover::before {
-    content: "";
-    position: absolute;
-    max-width: 100%;
-    max-height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    z-index: 1;
-    cursor: pointer;
-  }
-
-  .ProfileCardStyle:hover::after {
-    content: "Adicionar foto";
-    font-size: 12px;
-    position: absolute;
-    display: flex;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    color: #333;
-    padding: 10px 10px;
-    width: 50%;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    font-weight: bold;
-    z-index: 2;
-    cursor: pointer;
+    &:hover::after {
+      content: "Editar Foto";
+      font-size: 12px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      color: #333;
+      padding: 8px;
+      width: 100%;
+      text-align: center;
+      border-radius: 4px;
+      font-weight: bold;
+      z-index: 2;
+      cursor: pointer;
+    }
   }
 `;
+
 export { ModalContent, ModalWrapper };

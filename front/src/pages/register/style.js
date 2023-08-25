@@ -1,35 +1,26 @@
 import styled from "styled-components";
 
 const Container = styled.main`
-  height: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: row-reverse;
   justify-content: space-between;
+  background-color: #000;
+  padding: 50px;
 
-  div {
+  > div {
     width: 40%;
-    height: 150vh;
     min-width: 400px;
     background-color: #000;
-    display: flex;
-    flex-direction: column;
     color: #fff;
-    align-items: center;
-    justify-content: center;
     text-align: center;
-    gap: 8px;
     padding: 15px;
+
     > img {
-      margin-top: -255px;
-      min-width: 200px;
-      max-width: 400px;
+      max-width: 100%;
+      margin-top: -100px;
     }
+
     > h2 {
-      align-self: center;
-      font-family: "Roboto";
-      width: 100%;
       margin-top: 35px;
       color: rgba(190, 180, 190, 0.9);
     }
@@ -37,29 +28,25 @@ const Container = styled.main`
 
   section {
     width: 60%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   form {
-    align-self: center;
     max-width: 500px;
-    min-width: 300px;
-    width: 400px;
+    width: 100%;
     background-color: white;
-    height: auto;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0px 8px 14px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 20px;
+
     > h1 {
       margin-bottom: 26px;
-      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     }
 
     label {
@@ -67,15 +54,13 @@ const Container = styled.main`
     }
 
     input {
-      padding: 6px;
+      padding: 10px;
       border: 1px solid black;
       border-radius: 4px;
     }
+
     span {
-      margin-top: -5px;
-      margin-left: 5px;
       font-size: 11px;
-      padding: 0;
       color: red;
     }
 
@@ -86,64 +71,51 @@ const Container = styled.main`
     button {
       background-color: #000;
       color: white;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border: none;
       border-radius: 4px;
-      margin-top: 16px;
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
+
       &:hover {
-        background-color: rgba(00, 00, 00, 0.6);
+        background-color: rgba(0, 0, 0, 0.6);
       }
     }
 
     p {
-      align-self: flex-start;
-      margin: 30px 0px 14px 3px;
+      margin: 20px 0;
     }
   }
+
   @media (max-width: 790px) {
-    background-color: #000;
-    align-items: center;
-    display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 20px;
+
     > div {
+      width: 100%;
+      min-width: auto;
       background-color: #000;
-      height: auto;
-      display: flex;
-      flex-direction: column;
-      color: #fff;
+      padding: 20px;
       text-align: center;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      margin-top: 0;
+
       > img {
-        top: 350px;
-        position: absolute;
+        margin-top: 20px;
       }
+
       > h2 {
         display: none;
       }
     }
+
     section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100%;
     }
 
     form {
-      margin-top: 250px;
-      width: 60%;
-      position: absolute;
-      height: auto;
-      min-width: 300px;
-      background-color: white;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      > h1 {
-        margin-bottom: 26px;
-      }
+      margin-top: 20px;
+      width: 100%;
     }
   }
 `;

@@ -7,13 +7,44 @@ const UserCardStyle = styled.div`
   gap: 7%;
   align-items: center;
 
-  > img {
-    width: 210px;
-    height: 210px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  > div {
+  .image-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.image-container img {
+ 
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo preto transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlay p {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+ .container-welcome {
     color: white;
     border: 1px solid white;
     padding: 15px;
