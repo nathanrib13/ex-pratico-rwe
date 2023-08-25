@@ -14,13 +14,11 @@ const Dashboard = () => {
 
     useEffect(() => {
         async function loadUser() {
-            console.log("no useEffect");
             const token = localStorage.getItem("rwe:token");
             if (token) {
                 try {
                     api.defaults.headers.common.Authorization = `Bearer ${token}`;
                     const response = await api.get("/users");
-                    console.log(response.data, "aaaaaaaa");
                     setUserData(response.data);
                 } catch (error) {
                     console.log(error);
@@ -34,7 +32,6 @@ const Dashboard = () => {
         loadUser();
     }, []);
 
-    console.log(userData, "vvvvvvvvvvvvv")
 
     return (
         <Container>

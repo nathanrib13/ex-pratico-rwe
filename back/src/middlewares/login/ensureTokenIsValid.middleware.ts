@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 import { AppError } from "../../errors";
 
-
 const ensureTokenIsValidMiddleware = (
   req: Request,
   res: Response,

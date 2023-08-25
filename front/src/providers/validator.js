@@ -6,7 +6,7 @@ const loginSchema = z.object({
 });
 
 const instagramRegex = /^https:\/\/www\.instagram\.com\/[a-zA-Z0-9._]+\/?$/;
-const twitterRegex = /^https:\/\/twitter\.com\/[a-zA-Z0-9_]+\/?$/;
+const twitterRegex = /^https:\/\/www\.twitter\.com\/[a-zA-Z0-9_]+\/?$/;
 const facebookRegex = /^https:\/\/www\.facebook\.com\/[a-zA-Z0-9.-]+\/?$/;
 const linkedinRegex = /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/;
 
@@ -17,13 +17,13 @@ const registerSchema = z.object({
   about: z.string(),
   facebook: z
     .string()
-    .regex(facebookRegex, "Insira uma URL válida do Facebook"),
-  twitter: z.string().regex(twitterRegex, "Insira uma URL válida do Twitter"),
-  linkedin: z.string().regex(linkedinRegex, "Insira uma URL válida do Twitter"),
+    .regex(facebookRegex, "Insira uma URL válida do Facebook").optional(),
+  twitter: z.string().regex(twitterRegex, "Insira uma URL válida do Twitter").optional(),
+  linkedin: z.string().regex(linkedinRegex, "Insira uma URL válida do Twitter").optional(),
   instagram: z
     .string()
-    .regex(instagramRegex, "Insira uma URL válida do Instagram"),
-  image: z.string(),
+    .regex(instagramRegex, "Insira uma URL válida do Instagram").optional(),
+  image: z.string().optional(),
 });
 
 const updateUserSchema = registerSchema.partial();
