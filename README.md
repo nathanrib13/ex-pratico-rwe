@@ -20,15 +20,15 @@ Opção 2
 
 1. Clone este repositório para o seu ambiente local.
 
-bash
+```bash
 git clone https://github.com/nathanrib13/ex-pratico-rwe.git
 cd ex-pratico-rwe
-
+```
 
 3. No terminal, dentro do diretório do projeto, execute o seguinte comando para iniciar os serviços usando Docker Compose.
-bash
+```bash
 docker-compose up
-
+```
 Agora, seus serviços estão em execução:
 
 * O serviço bd está executando o PostgreSQL na porta 5445
@@ -36,19 +36,19 @@ Agora, seus serviços estão em execução:
 * O serviço front está executando a aplicação React na porta 5173
 
 Abra o navegador e acesse a aplicação React:
-bash
+```bash
 http://localhost:5173
-
+```
 <br />
 
 ## Instruções usando Node local + Postegresql para iniciar o projeto (Opção 2)
 
 1. Clone este repositório para o seu ambiente local.
 
-bash
+```bash
 git clone https://github.com/nathanrib13/ex-pratico-rwe.git
 cd ex-pratico-rwe
-
+```
 
 2. Certifique-se que no seu ambiente o postregresql esteja em execução. 
 
@@ -58,14 +58,14 @@ cd ex-pratico-rwe
 Um exemplo de conteúdo para o arquivo .env está incluído em env.example.
 
 5. No terminal, dentro do diretório do backend projeto, execute o seguinte comando para instalar todas as dependências do projeto.
-bash
+```bash
 npm i 
-
+```
 
 6. No terminal, dentro do diretório do backend projeto, execute o seguinte comando para iniciar os serviços da api.
-bash
+```bash
 npm rum dev 
-
+```
 
 Agora, seu serviço está em execução:
 * O serviço api está executando a API na porta 3000
@@ -74,22 +74,17 @@ Agora, seu serviço está em execução:
 7. Entre na pasta front do projeto.
 
 8. No terminal, dentro do diretório do front projeto, execute o seguinte comando para instalar todas as dependências do projeto.
-bash
+```bash
 npm i 
-
+```
 
 9. No terminal, dentro do diretório do front projeto, execute o seguinte comando para iniciar o serviço do front.
-bash
+```bash
 npm rum dev 
-
+```
 
 Agora, seu serviço está em execução:
 O serviço front está executando a aplicação React na porta 5173.
-
-
-Abra o navegador e acesse a aplicação React:
-bash
-http://localhost:5173
 
 
 Abra o navegador e acesse a aplicação React:
