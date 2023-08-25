@@ -6,8 +6,6 @@ import { AppError } from "../../errors";
 import { User } from "../../entities/users.entity";
 import jwt from "jsonwebtoken";
 
-
-
 const loginService = async (loginData: ILogin): Promise<string> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 

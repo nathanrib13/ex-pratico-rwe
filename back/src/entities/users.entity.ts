@@ -1,49 +1,54 @@
 import { getRounds, hashSync } from "bcryptjs";
-import { BeforeInsert, BeforeUpdate, Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { v4 as uuidv4 } from 'uuid';
+import {
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { Image } from "./images.entity";
 
-@Entity('users')
-export class User{
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
-  
-    @Column({ length: 65 })
-    name: string;
-  
-    @Column({ length: 75, unique: true })
-    email: string;
+@Entity("users")
+export class User {
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @Column()
-    password: string;
+  @Column({ length: 65 })
+  name: string;
 
-    @Column()
-    about: string;
+  @Column({ length: 75, unique: true })
+  email: string;
 
-    @Column()
-    facebook: string;
+  @Column()
+  password: string;
 
-    @Column()
-    twitter: string;
+  @Column({ type: "text", nullable: true })
+  about: string | null;
 
-    @Column()
-    linkedin: string;
+  @Column({ type: "text", nullable: true })
+  facebook: string | null;
 
-    @Column()
-    instagram: string;
+  @Column({ type: "text", nullable: true })
+  twitter: string | null;
 
-    @Column()
-    image: string
-    
-    @BeforeInsert()
-    @BeforeUpdate()
-    hashPassword() {
-      const isEncrypted = getRounds(this.password);
-      if (!isEncrypted) {
-        this.password = hashSync(this.password, 10);
-      }
+  @Column({ type: "text", nullable: true })
+  linkedin: string | null;
+
+  @Column({ type: "text", nullable: true })
+  instagram: string | null;
+
+  @OneToOne(() => Image, (image) => image.user, { cascade: true })
+  @JoinColumn()
+  image: Image;
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  hashPassword() {
+    const isEncrypted = getRounds(this.password);
+    if (!isEncrypted) {
+      this.password = hashSync(this.password, 10);
     }
-    
-
-
+  }
 }
-

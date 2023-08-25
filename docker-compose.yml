@@ -8,7 +8,7 @@ services:
       POSTGRES_DB: rwe_clients
 
     ports:
-      - "5440:5432"
+      - "5445:5432"
 
   api:
     build:
@@ -21,16 +21,17 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgres
       DB_NAME: rwe_clients
+      SECRET_KEY: "ff67b5c47a98707a51ebd307dc88de7c"
 
     ports:
       - "3000:3000"
 
-  front:
-    build:
-      context: ./front
-    depends_on:
-      - api
-    ports:
-      - "5173:5173"
-    environment:
-      REACT_APP_API_URL: http://api:3000/
+  # front:
+  #   build:
+  #     context: ./front
+  #   depends_on:
+  #     - api
+  #   ports:
+  #     - 5173:5173
+  #   environment:
+  #      REACT_APP_API_URL: http://api:3000/
