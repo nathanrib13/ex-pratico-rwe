@@ -50,26 +50,8 @@ const Register = () => {
                     <input type="text" id="about" {...register("about")} placeholder="Conte um pouco sobre voce" />
                     {errors.about && <span className="error-message">{errors.about.message}</span>}
 
-                    <label htmlFor="facebook">Facebook</label>
-                    <input type="text" id="facebook" {...register("facebook")} placeholder="URL do Facebook" />
-                    {errors.facebook && <span className="error-message">{errors.facebook.message}</span>}
 
-                    <label htmlFor="instagram">Instagram</label>
-                    <input type="text" id="instagram" {...register("instagram")} placeholder="URL do Instagram" />
-                    {errors.instagram && <span className="error-message">{errors.instagram.message}</span>}
-
-                    <label htmlFor="twitter">Twitter</label>
-                    <input type="text" id="twitter" {...register("twitter")} placeholder="URL do Twitter" />
-                    {errors.twitter && <span className="error-message">{errors.twitter.message}</span>}
-
-                    <label htmlFor="linkedin">Linkedin</label>
-                    <input type="text" id="linkedin" {...register("linkedin")} placeholder="URL do Linkedin" />
-                    {errors.linkedin && <span className="error-message">{errors.linkedin.message}</span>}
-
-                    <label htmlFor="image">Photo</label>
-                    <input type="file" id="image" {...register("image")} placeholder="" />
-                    {errors.image && <span className="error-message">{errors.image.message}</span>}
-
+                
                     <button type="submit">Cadastrar</button>
                     <p>Ja tem uma conta?</p>
                     <button

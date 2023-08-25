@@ -16,7 +16,7 @@ const ModalEditUser = ({
      const [uploadImage, setUploadImage] = useState(false);
 
 
-    const { register, handleSubmit } = useForm({
+    const { register, handleSubmit, formState: { errors }} = useForm({
         resolver: zodResolver(updateUserSchema),
     });
    
@@ -55,7 +55,8 @@ const ModalEditUser = ({
                 <h2>Editar Usuário</h2>
                 <form onSubmit={handleSubmit(editUser)}>
                     <div className="ProfileCardStyle"  onClick={openEditImage} >
-                        <img src={userData.image} alt="" />
+                        <img    src={userData?.image || 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png'}                alt=""
+ />
                     </div>
 
                     <label htmlFor="">Nome</label>
@@ -66,28 +67,36 @@ const ModalEditUser = ({
                     <input type="password" id="password" {...register("password")}  />
                     <label htmlFor="">Sobre</label>
                     <textarea rows="6" cols="22" id="about" {...register("about")}  placeholder={userData.about} />
-                    <label htmlFor="">Facebook</label>
-                    <input type="text" id="about" {...register("about")} placeholder={userData.facebook}/>
-                    <label htmlFor="">Instagram</label>
-                    <input type="text" id="about" {...register("about")}  placeholder={userData.instagram} />
-                    <label htmlFor="">Twitter</label >
-                    <input type="text" id="about" {...register("about")}  placeholder={userData.twitter} />
-                    <label htmlFor="">Linkedin</label>
-                    <input type="text" id="about" {...register("about")}  placeholder={userData.linkedin} />
+                    <label htmlFor="facebook">Facebook</label>
+                    <input type="text" id="facebook" {...register("facebook")} placeholder="URL do Facebook" />
+                    {errors.facebook && <span className="error-message">{errors.facebook.message}</span>}
+
+                    <label htmlFor="instagram">Instagram</label>
+                    <input type="text" id="instagram" {...register("instagram")} placeholder="URL do Instagram" />
+                    {errors.instagram && <span className="error-message">{errors.instagram.message}</span>}
+
+                    <label htmlFor="twitter">Twitter</label>
+                    <input type="text" id="twitter" {...register("twitter")} placeholder="URL do Twitter" />
+                    {errors.twitter && <span className="error-message">{errors.twitter.message}</span>}
+
+                    <label htmlFor="linkedin">Linkedin</label>
+                    <input type="text" id="linkedin" {...register("linkedin")} placeholder="URL do Linkedin" />
+                    {errors.linkedin && <span className="error-message">{errors.linkedin.message}</span>}
 
                     <div>
                         <button type="submit">Enviar</button>
                         <button onClick={closeEditUserModal} type="button">     Fechar
                         </button>
                     </div>
-                    {uploadImage &&   <div className="modal-upload-Image">
-                        <div>
-                        <input type="file"/>
-                        <button onClick={sendImage} type="button">  enviar </button>
-                        <button onClick={closeEditImage}>fechar</button>
-                        </div>
-                     </div>}
+        
                 </form>
+                {uploadImage &&   <div className="modal-upload-Image">
+                        <form onSubmit={handleSubmit(sendImage)}>
+                        <input type="file"/>
+                        <button type="submit">  enviar </button>
+                        <button onClick={closeEditImage}>fechar</button>
+                        </form>
+                     </div>}
             
              
               

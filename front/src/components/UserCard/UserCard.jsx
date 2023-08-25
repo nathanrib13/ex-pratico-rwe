@@ -7,8 +7,7 @@ const UserCard = ({ userData }) => {
     return (
         <UserCardStyle>
             <img
-                src={userData?.image}
-                alt=""
+   src={userData?.image || 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png'}                alt=""
             />
             <div>
                 <div>

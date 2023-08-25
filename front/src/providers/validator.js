@@ -11,10 +11,10 @@ const facebookRegex = /^https:\/\/www\.facebook\.com\/[a-zA-Z0-9.-]+\/?$/;
 const linkedinRegex = /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/;
 
 const registerSchema = z.object({
-  name: z.string().max(65),
+   name: z.string().max(65),
   email: z.string().email().max(75),
   password: z.string(),
-  about: z.string(),
+  about: z.string().optional(),
   facebook: z
     .string()
     .regex(facebookRegex, "Insira uma URL válida do Facebook").optional(),
@@ -23,9 +23,9 @@ const registerSchema = z.object({
   instagram: z
     .string()
     .regex(instagramRegex, "Insira uma URL válida do Instagram").optional(),
-  image: z.string().optional(),
+  image: z.any()
 });
 
-const updateUserSchema = registerSchema.partial();
+const updateUserSchema = registerSchema.partial()
 
 export { loginSchema, registerSchema, updateUserSchema };
