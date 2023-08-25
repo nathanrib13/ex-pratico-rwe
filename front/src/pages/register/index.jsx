@@ -66,9 +66,9 @@ const Register = () => {
                     <input type="text" id="linkedin" {...register("linkedin")} placeholder="URL do Linkedin" />
                     {errors.linkedin && <span className="error-message">{errors.linkedin.message}</span>}
 
-                    {/* <label htmlFor="image">Photo</label>
+                    <label htmlFor="image">Photo</label>
                     <input type="file" id="image" {...register("image")} placeholder="" />
-                    {errors.image && <span className="error-message">{errors.image.message}</span>} */}
+                    {errors.image && <span className="error-message">{errors.image.message}</span>}
 
                     <button type="submit">Cadastrar</button>
                     <p>Ja tem uma conta?</p>

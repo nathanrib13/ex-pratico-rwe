@@ -35,7 +35,7 @@ const Dashboard = () => {
 
     return (
         <Container>
-            <Header />
+            <Header userData={userData} />
 
             <UserCard userData={userData} />
             <h2>Meus Projetos</h2>

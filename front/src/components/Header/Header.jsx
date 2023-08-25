@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import HeaderStyled from "./style.js";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import ModalEditUser from "../modalEditUser/ModalEditUser.jsx";
 
-const Header = () => {
+const Header = ({userData}) => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [isModalEditOpen, setIsModalEditOpen] = useState(false);
@@ -39,6 +40,7 @@ const Header = () => {
             )}
             {isModalEditOpen && (
                 <ModalEditUser
+                userData={userData}
                     openEditUserModal={isModalEditOpen}
                     closeEditUserModal={closeEditUserModal}
                 />
