@@ -1,7 +1,6 @@
 # ex-pratico-rwe
 
-
-Este é o README do seu projeto. Aqui estão as instruções para configurar e executar a aplicação usando Docker Compose.
+Iniciando projeto maquina local
 
 ## Pré-requisitos
 
@@ -16,7 +15,9 @@ git clone https://github.com/nathanrib13/ex-pratico-rwe.git
 cd ex-pratico-rwe
 ```
 
-2. Crie um arquivo .env na raiz do diretório do projeto e configure as variáveis de ambiente necessárias. Um exemplo de conteúdo para o arquivo .env está incluído abaixo.
+2. Crie um arquivo .env na raiz do diretório do projeto e configure as variáveis de ambiente necessárias. Um exemplo de conteúdo para o arquivo .env está incluído em env.example.
+
+
 3. No terminal, dentro do diretório do projeto, execute o seguinte comando para iniciar os serviços usando Docker Compose.
 ```bash
 docker-compose up
