@@ -8,18 +8,21 @@ import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
     const [userData, setUserData] = useState(null);
+    const [userProfileImage, setUserProfileImage] = useState(null);
     const navigate = useNavigate()
 
 
-
+ 
     useEffect(() => {
         async function loadUser() {
             const token = localStorage.getItem("rwe:token");
             if (token) {
                 try {
                     api.defaults.headers.common.Authorization = `Bearer ${token}`;
-                    const response = await api.get("/users");
-                    setUserData(response.data);
+                    const responseUserData = await api.get("/users");
+                    const responseUserProfileImage = await api.get("/image/user/profile");
+                    setUserData(responseUserData.data);
+                    setUserProfileImage(`data:imgage/png;base64, ${responseUserProfileImage.data}`); 
                 } catch (error) {
                     console.log(error);
 
@@ -37,7 +40,7 @@ const Dashboard = () => {
         <Container>
             <Header userData={userData} />
 
-            <UserCard userData={userData} />
+            <UserCard userData={userData} userProfileImage={userProfileImage}/>
             <h2>Meus Projetos</h2>
             <section className="projects">
 

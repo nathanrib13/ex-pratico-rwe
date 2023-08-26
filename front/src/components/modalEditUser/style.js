@@ -92,39 +92,7 @@ position: relative;
       right: 5px;
 
     }
-  .modal-upload-Image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-
-    > div {
-      padding: 25px;
-      width: 100%;
-      background-color: #fff;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 400px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
-     
-    }
-    form {
-        background-color: #fff;
-        padding: 15px;
-      }
-  }
-
+ 
   .button-container {
     display: flex;
     justify-content: space-between;

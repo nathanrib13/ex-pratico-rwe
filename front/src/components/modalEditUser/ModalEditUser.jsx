@@ -5,49 +5,39 @@ import api from "../../services/api";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {  updateUserSchema } from "../../providers/validator";
+import ModalUploadImage from "../modalUploadImage/modalUploadImage";
 
 
 
 // eslint-disable-next-line react/prop-types
 const ModalEditUser = ({
-    closeEditUserModal, userData}) => {
-
-
+    closeEditUserModal, userData, userProfileImage}) => {
      const [uploadImage, setUploadImage] = useState(false);
-
-
 
     const { register, handleSubmit, formState: { errors }} = useForm({
         resolver: zodResolver(updateUserSchema),
     });
    
-        const openEditImage = () => {
-            setUploadImage(true);
-          };
-    
-        const closeEditImage = () => {
-            setUploadImage(false);
-          };
+    const openEditImage = () => {
+        setUploadImage(true);
+    };
+
+    const closeEditImage = () => {
+        setUploadImage(false);
+    };
     
 
     const editUser = async (dataToSend) => {
-        const response = await api.patch(`/users}`, dataToSend);
+        const response = await api.patch(`/users`, dataToSend);
         if (response.status == 200) {
-            alert.success("usuário editado com sucesso!");
+            alert("usuário editado com sucesso!");
         }
         setTimeout(() => {
             location.reload();
         }, 1000);
     };
-    const sendImage = async (dataToSend) => {
-        const response = await api.patch(`/image/user/profile}`, dataToSend);
-        if (response.status == 200) {
-            alert.success("imagem alterada com sucesso!");
-        }
-        setTimeout(() => {
-            location.reload();
-        }, 1000);
-    };
+    
+    
  
 
     return (
@@ -56,7 +46,7 @@ const ModalEditUser = ({
                 <h2>Editar Usuário</h2>
                 <form onSubmit={handleSubmit(editUser)}>
                     <div className="ProfileCardStyle"  onClick={openEditImage} >
-                        <img    src={userData?.image || 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png'}                alt=""
+                        <img    src={userProfileImage || 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png'}                alt=""
  />
                     </div>
 
@@ -91,16 +81,7 @@ const ModalEditUser = ({
                     
 
                 </form>
-                {uploadImage &&   <div className="modal-upload-Image">
-                        <form onSubmit={handleSubmit(sendImage)}>
-                        <input type="file"/>
-                        <div>
-                        <button type="submit">  enviar </button>
-                        <button onClick={closeEditImage}>fechar</button>
-                        </div>
-                        </form>
-                        
-                     </div>}
+                {uploadImage &&   <ModalUploadImage closeEditImage={closeEditImage}/> }
             
              
             <button type="button"className="close-modal" onClick={closeEditUserModal}>x</button>
