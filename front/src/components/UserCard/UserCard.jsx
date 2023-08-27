@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ModalEditUser from "../modalEditUser/ModalEditUser.jsx";
 import { UserCardStyle } from "./style";
+import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter } from 'react-icons/bs';
 
 const UserCard = ({ userData, userProfileImage }) => {
 
@@ -15,9 +16,10 @@ const UserCard = ({ userData, userProfileImage }) => {
     const closeEditUserModal = () => {
         setIsModalEditOpen(false);
     };
-
+console.log(userData)
     return (
         <UserCardStyle>
+    
            
             <section className="image-container" onClick={openEditUserModal} >
                 <img 
@@ -30,6 +32,12 @@ const UserCard = ({ userData, userProfileImage }) => {
             <div className="container-welcome">
                 <div>
                     <h2>Bem vindo(a), {userData?.name} </h2>
+                </div>
+                <div className="socials-links">
+                {userData?.facebook && (<a href={userData.facebook} target="_blank" rel="noopener noreferrer"><BsFacebook /></a>) }
+                {userData?.instagram && (<a href={userData.instagram} target="_blank" rel="noopener noreferrer"><BsInstagram /></a>) }
+                {userData?.twitter && (<a href={userData.twitter} target="_blank" rel="noopener noreferrer"><BsTwitter /></a>) }
+                {userData?.linkedin && (<a href={userData.linkedin} target="_blank" rel="noopener noreferrer"><BsLinkedin/></a>) }
                 </div>
             </div>
             {isModalEditOpen && (
