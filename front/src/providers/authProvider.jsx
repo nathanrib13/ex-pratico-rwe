@@ -3,17 +3,15 @@
 import { createContext, useEffect, useState } from "react";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
-import { Toaster } from "sonner";
 
 const AuthContext = createContext();
 
 
 const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true);
-    const [userData, setUserData] = useState(null);
-
-
+    const [loading, setLoading] = useState(false);
+    const [responseUserData, setResponseUserData] = useState(null);
+    const [userProfileImage, setUserProfileImage] = useState(null);
 
     useEffect(() => {
         async function loadUser() {
@@ -21,9 +19,10 @@ const AuthProvider = ({ children }) => {
             if (token) {
                 try {
                     api.defaults.headers.common.Authorization = `Bearer ${token}`;
-                    const response = await api.get("/users");
-                    setUserData(response.data);
-                    navigate("/dashboard");
+                    const responseUserData = await api.get("/users");
+                    setResponseUserData(responseUserData.data);
+                    const responseUserProfileImage = await api.get("/image/user/profile");
+                    setUserProfileImage(`data:imgage/png;base64, ${responseUserProfileImage.data}`); 
                 } catch (error) {
                     console.log(error);
                 } finally {
@@ -37,16 +36,29 @@ const AuthProvider = ({ children }) => {
         loadUser();
     }, [navigate]);
 
+    const signIn = async (data) => {
+        try {
+          const response = await api.post("/login", data);
+          const { token } = response.data;
+          api.defaults.headers.common.authorization = `Bearer ${token}`;
+          localStorage.setItem("rwe:token", token);
+          navigate("dashboard");
+        } catch (error) {
+          if (error.response.status) alert("Login ou senha inválidos");
+          console.log(error.response.status);
+        }
+      };
+    
+
     return (
         <AuthContext.Provider
             value={{
                 loading,
-                userData,
-
-            }}
-        >
+                responseUserData,
+                userProfileImage,
+                signIn
+            }}>
             {children}
-            <Toaster position="top-center" richColors />
         </AuthContext.Provider>
     );
 };

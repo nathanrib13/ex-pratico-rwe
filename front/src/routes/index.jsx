@@ -4,7 +4,7 @@ import Login from "../pages/login";
 import Register from "../pages/register";
 import Dashboard from "../pages/dashboard";
 
-const RoutesMain = () => {
+const   RoutesMain = () => {
   return (
     <Routes>
       <Route path="/" element={<Login />} />

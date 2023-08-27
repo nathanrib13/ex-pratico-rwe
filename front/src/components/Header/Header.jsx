@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import ModalEditUser from "../modalEditUser/ModalEditUser.jsx";
 
-const Header = ({userData}) => {
+const Header = ({userData, userProfileImage}) => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [isModalEditOpen, setIsModalEditOpen] = useState(false);
@@ -40,7 +40,8 @@ const Header = ({userData}) => {
             )}
             {isModalEditOpen && (
                 <ModalEditUser
-                userData={userData}
+                    userProfileImage={userProfileImage}
+                    userData={userData}
                     openEditUserModal={isModalEditOpen}
                     closeEditUserModal={closeEditUserModal}
                 />

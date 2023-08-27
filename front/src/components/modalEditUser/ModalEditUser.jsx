@@ -27,8 +27,11 @@ const ModalEditUser = ({
     };
     
 
+
     const editUser = async (dataToSend) => {
-        const response = await api.patch(`/users`, dataToSend);
+        const response = await api.patch(`/users`, dataToSend, {
+    
+          })
         if (response.status == 200) {
             alert("usuário editado com sucesso!");
         }
@@ -36,7 +39,7 @@ const ModalEditUser = ({
             location.reload();
         }, 1000);
     };
-    
+
     
  
 
@@ -51,13 +54,13 @@ const ModalEditUser = ({
                     </div>
 
                     <label htmlFor="">Nome</label>
-                    <input type="text" id="name" {...register("name")}  placeholder={userData.name} />
+                    <input type="text" id="name" {...register("name")}  placeholder={userData?.name} />
                     <label htmlFor="">Email</label>
-                    <input type="email" id="email" {...register("email")}  placeholder={userData.email}/>
+                    <input type="email" id="email" {...register("email")}  placeholder={userData?.email}/>
                     <label htmlFor="">Senha</label>
                     <input type="password" id="password" {...register("password")}  />
                     <label htmlFor="">Sobre</label>
-                    <textarea rows="6" cols="22" id="about" {...register("about")}  placeholder={userData.about} />
+                    <textarea rows="6" cols="22" id="about" {...register("about")}  placeholder={userData?.about} />
                     <label htmlFor="facebook">Facebook</label>
                     <input type="text" id="facebook" {...register("facebook")} placeholder="URL do Facebook" />
                     {errors.facebook && <span className="error-message">{errors.facebook.message}</span>}

@@ -10,22 +10,28 @@ import {  updateUserSchema } from "../../providers/validator";
 const ModalUploadImage = ({
     closeEditImage}) => {
 
-
      const { register, handleSubmit, formState: { errors }} = useForm({
         resolver: zodResolver(updateUserSchema),
     });
 
-
- 
     
     const sendImage = async (dataToSend) => {
-        const response = await api.post(`image/user/profile`, dataToSend);
-        if (response.status == 200) {
-            alert("imagem alterada com sucesso!");
+        try {
+            console.log(dataToSend)
+            const formData = new FormData();
+            formData.append("file", dataToSend?.image[0]);
+            const response = await api.post(`image/user/profile`, formData, {
+                "Content-Type": "multipart/form-data",
+            })
+            if (response.status == 200) {
+                alert("imagem alterada com sucesso!");
+                setTimeout(() => {
+                    location.reload();
+                  }, 500);
+            }
+        } catch (error) {
+            console.error(error) 
         }
-        setTimeout(() => {
-            location.reload();
-        }, 1000);
     };
  
 

@@ -1,9 +1,10 @@
     import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import api from "../../services/api";
 import { loginSchema } from "../../providers/validator";
 import Container from "./style";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+
 
 
 const Login = () => {
@@ -12,19 +13,7 @@ const Login = () => {
         resolver: zodResolver(loginSchema),
     });
 
-    const signIn = async (data) => {
-
-        try {
-            const response = await api.post("/login", data);
-            const { token } = response.data;
-            api.defaults.headers.common.authorization = `Bearer ${token}`;
-            localStorage.setItem("rwe:token", token);
-            navigate("/dashboard");
-        } catch (error) {
-            alert("login ou senha inválidos")
-            console.log(error.response.status);
-        }
-    };
+    const { signIn } = useAuth();
 
 
     return (
