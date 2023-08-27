@@ -1,7 +1,7 @@
 
 import styled from "styled-components";
 
-export const uploadForm = styled.div`
+export const UploadImage = styled.div`
 
 
 

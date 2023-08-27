@@ -6,7 +6,6 @@ import { UserCardStyle } from "./style";
 const UserCard = ({ userData, userProfileImage }) => {
 
     const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-    console.log(userProfileImage)
   
            
     
