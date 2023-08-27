@@ -16,7 +16,6 @@ const UserCard = ({ userData, userProfileImage }) => {
     const closeEditUserModal = () => {
         setIsModalEditOpen(false);
     };
-console.log(userData)
     return (
         <UserCardStyle>
     
