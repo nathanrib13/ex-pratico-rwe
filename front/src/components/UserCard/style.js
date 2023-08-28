@@ -13,6 +13,20 @@ const UserCardStyle = styled.div`
   cursor: pointer;
 }
 
+.socials-links{
+color: white;
+display:  flex;
+gap: 12px;
+> a {
+  color: white;
+  text-decoration: none;
+  > svg { 
+    width: 25px;
+    height: 25px;
+  }
+ }
+}
+
 .image-container img {
  
   width: 210px;

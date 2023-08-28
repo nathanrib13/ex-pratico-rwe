@@ -26,11 +26,19 @@ const ModalEditUser = ({
         setUploadImage(false);
     };
     
+    function submitEditedForm (data){
+        editUser({
+            ...userData,
+            ...Object.fromEntries(
+                Object.entries(data).filter(([_, value]) => value !== undefined)
+            )
 
+      })
+    }
 
     const editUser = async (dataToSend) => {
+        console.log(dataToSend)
         const response = await api.patch(`/users`, dataToSend, {
-    
           })
         if (response.status == 200) {
             alert("usuário editado com sucesso!");
@@ -39,57 +47,47 @@ const ModalEditUser = ({
             location.reload();
         }, 1000);
     };
-
-    
  
 
     return (
         <ModalWrapper >
             <ModalContent>
                 <h2>Editar Usuário</h2>
-                <form onSubmit={handleSubmit(editUser)}>
+                <form onSubmit={handleSubmit(submitEditedForm)}>
                     <div className="ProfileCardStyle"  onClick={openEditImage} >
-                        <img    src={userProfileImage || 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png'}                alt=""
- />
+                        <img src={userProfileImage || 'https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png'} alt=""/>
                     </div>
 
                     <label htmlFor="">Nome</label>
-                    <input type="text" id="name" {...register("name")}  placeholder={userData?.name} />
+                    <input type="text" id="name" {...register("name")}  defaultValue ={userData?.name} />
                     <label htmlFor="">Email</label>
-                    <input type="email" id="email" {...register("email")}  placeholder={userData?.email}/>
-                    <label htmlFor="">Senha</label>
-                    <input type="password" id="password" {...register("password")}  />
+                    <input type="email" id="email" {...register("email")}  defaultValue ={userData?.email}/>
                     <label htmlFor="">Sobre</label>
-                    <textarea rows="6" cols="22" id="about" {...register("about")}  placeholder={userData?.about} />
+                    <textarea rows="6" cols="22" id="about" {...register("about")}  defaultValue ={userData?.about} />
                     <label htmlFor="facebook">Facebook</label>
-                    <input type="text" id="facebook" {...register("facebook")} placeholder="URL do Facebook" />
+                    <input type="text" id="facebook" {...register("facebook")} defaultValue={userData?.facebook} />
                     {errors.facebook && <span className="error-message">{errors.facebook.message}</span>}
 
                     <label htmlFor="instagram">Instagram</label>
-                    <input type="text" id="instagram" {...register("instagram")} placeholder="URL do Instagram" />
+                    <input type="text" id="instagram" {...register("instagram")} defaultValue={userData?.instagram}  />
                     {errors.instagram && <span className="error-message">{errors.instagram.message}</span>}
 
                     <label htmlFor="twitter">Twitter</label>
-                    <input type="text" id="twitter" {...register("twitter")} placeholder="URL do Twitter" />
+                    <input type="text" id="twitter" {...register("twitter")} defaultValue={userData?.twitter}  />
                     {errors.twitter && <span className="error-message">{errors.twitter.message}</span>}
 
                     <label htmlFor="linkedin">Linkedin</label>
-                    <input type="text" id="linkedin" {...register("linkedin")} placeholder="URL do Linkedin" />
+                    <input type="text" id="linkedin" {...register("linkedin")} defaultValue={userData?.linkedin}  />
                     {errors.linkedin && <span className="error-message">{errors.linkedin.message}</span>}
 
                     <div>
                         <button type="submit">Enviar</button>
-                        
                     </div>
-                    
-
                 </form>
                 {uploadImage &&   <ModalUploadImage closeEditImage={closeEditImage}/> }
-            
              
             <button type="button"className="close-modal" onClick={closeEditUserModal}>x</button>
             </ModalContent>
-            
         </ModalWrapper >
     );
 };
